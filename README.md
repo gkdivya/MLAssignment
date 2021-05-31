@@ -6,7 +6,7 @@ Objective is to train a model to localize and classify each instance of person a
 ## Dataset
 Path: [Person Car Dataset](https://evp-ml-data.s3.us-east-2.amazonaws.com/mlinterview/openimages-personcar/trainval.tar.gz)
 
-**Dataset Structure:**
+### Dataset Structure:
 
     trainval/
       images/
@@ -18,44 +18,36 @@ Path: [Person Car Dataset](https://evp-ml-data.s3.us-east-2.amazonaws.com/mlint
       annotations/
         bbox-annotations.json
       
-**Analysis:**
-</br>
--   No of Unique Images:
--   No of Annotations:
--   Categories:
--   Improper Annotation: Image id: 1378 was wrongly annotated
-</br>
+### Analysis:
+    -   No of Unique Images:
+    -   No of Annotations:
+    -   Categories:
+    -   Improper Annotation: Image id: 1378 was wrongly annotated
 
-**Custom Dataset:**
-</br>
-</br>
+### Custom Dataset:
 Defined custom dataset which takes the dataset path and the annotation file as input. All the training images are inside the “train-val” folder. 
 </br>
-
 In the __getitem__ method, read the image using the image_id and all the meta data associated with that image.
-
 Initialized a dictionary called 'data_annotation', which will be passed to the model for training. 
-
 </br>
-This dictionary will have all the metadata of the annotation like 
-<ul>
-    <li>actual bounding box coordinates</li>
-    <li>it’s corresponding labels</li>
-    <li>image_id</li>
-    <li>area of the bounding boxes. (Area param is used during evaluation with the COCO metric, to separate the metric scores between small, medium, and large boxes)</li>
-    <li>iscrowd   (Instances with isCrowd as 'True' will be ignored during evaluation</li>
-</ul>
-</br>
+    This dictionary will have all the metadata of the annotation like 
+    <ul>
+        <li>actual bounding box coordinates</li>
+        <li>it’s corresponding labels</li>
+        <li>image_id</li>
+        <li>area of the bounding boxes. (Area param is used during evaluation with the COCO metric, to separate the metric scores between small, medium, and large boxes)</li>
+        <li>iscrowd   (Instances with isCrowd as 'True' will be ignored during evaluation</li>
+    </ul>
 In the __len__ method, the size of the Dataset is returned.
-</br>
 
-**Dataloader:**
-</br>
+### Dataloader: 
 Data loader will load the training data in batches into the model for training. Using PyTorch’s DataLoader utility, dataset was split into train and val sets.
 </br>
-**Model:**
-Torchvision’s FasterRCNN with a resnet50 backbone is used with pretrained weights as false to train and predict persons and cars in the images.
 
+### Model: 
+Torchvision’s FasterRCNN with a resnet50 backbone is used with pretrained weights as false to train and predict persons and cars in the images.
+</br>
+</br>
 [Person Car Detection Colab Notebook](https://colab.research.google.com/github/gkdivya/MLAssignment/blob/main/PersonCar_Detection.ipynb)
 
 ## Experiments
@@ -86,6 +78,6 @@ Epochs = 5
 
 
 ## Reference Links
-[Kaggle Notebook]( https://www.kaggle.com/bharatb964/pytorch-implementation-of-faster-r-cnn)
-[PyTorch TorchVision Tutorial](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html)
-[Faster Rcnn](https://blog.francium.tech/object-detection-with-faster-rcnn-bc2e4295bf49)
+[Kaggle Notebook]( https://www.kaggle.com/bharatb964/pytorch-implementation-of-faster-r-cnn) </br>
+[PyTorch TorchVision Tutorial](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html)</br>
+[Faster Rcnn](https://blog.francium.tech/object-detection-with-faster-rcnn-bc2e4295bf49)</br>
