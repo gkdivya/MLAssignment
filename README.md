@@ -44,7 +44,7 @@ Below important concepts were used/considered while designing the network:
 - PyTorch - Faster RCNN model is used for prediction
 - Backbone model - resnet - 50
 - 
-
+[Person Car Detection Colab Notebook](https://colab.research.google.com/github/gkdivya/MLAssignment/blob/main/PersonCar_Detection.ipynb)
 ### Model Architecture
 
 ![image](https://user-images.githubusercontent.com/17870236/120178750-71947580-c227-11eb-9432-77e7f455a945.png)
