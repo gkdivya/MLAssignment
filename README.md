@@ -36,7 +36,7 @@ Epochs = 5
 
 |Experiment| Batch Size | Epochs | Augmentation | Learning Rate Scheduler | Validation Accuracy | 
 |-------|---|---|---|---|---|
-|[Base Skeleton Model]() |16|5|No|SGD 0.01|99%|
+|[Base Skeleton Model](https://github.com/gkdivya/MLAssignment/blob/main/Experiments/Base_Skeleton_Model_PersonCar_Detection.ipynb) |16|5|No|SGD 0.01|99%|
 
 
 ## Final Best Model
