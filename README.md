@@ -36,13 +36,9 @@ Epochs = 5
 
 |Experiment| Batch Size | Epochs | Augmentation | Learning Rate Scheduler | Validation Accuracy | 
 |-------|---|---|---|---|---|
-|[Base Skeleton Model](https://github.com/gkdivya/MLAssignment/blob/main/Experiments/Base_Skeleton_Model_PersonCar_Detection.ipynb) |16|5|No|SGD 0.01|99%|
-
-
-## Final Best Model
-
-[GitHub Notebook Link]() <br>
-[Colab Link]()
+|[Base Skeleton Model](https://github.com/gkdivya/MLAssignment/blob/main/Experiments/Base_Skeleton_Model_PersonCar_Detection.ipynb) |16|5|No|SGD 0.01||
+|[With Step LR change]() |16|5|No|SGD 0.01||
+|[With Image Augmentation]() |16|5|Yes|SGD 0.01||
 
 Below important concepts were used/considered while designing the network:
 - PyTorch - Faster RCNN model is used for prediction
@@ -61,7 +57,8 @@ Below important concepts were used/considered while designing the network:
     Epoch: 3, Loss: 0.36063939332962036
     Epoch: 4, Loss: 0.8723194003105164
 
-### Validation Accuracy
+### Validation Output
+![image](https://user-images.githubusercontent.com/17870236/120183882-eb2f6200-c22d-11eb-98ed-04693f38ea12.png)
 
 
 
