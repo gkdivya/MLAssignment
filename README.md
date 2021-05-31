@@ -4,9 +4,9 @@
 Objective is to train a model to localize and classify each instance of person and car in images using Object detection algorithm.
 
 ## Dataset
-[Dataset](https://evp-ml-data.s3.us-east-2.amazonaws.com/mlinterview/openimages-personcar/trainval.tar.gz)
+Path: [Person Car Dataset](https://evp-ml-data.s3.us-east-2.amazonaws.com/mlinterview/openimages-personcar/trainval.tar.gz)
 
-*Dataset Structure:* 
+**Dataset Structure:**
 
     trainval/
       images/
@@ -18,28 +18,46 @@ Objective is to train a model to localize and classify each instance of person a
       annotations/
         bbox-annotations.json
       
-*Analysis:*
+**Analysis:**
+</br>
 -   No of Unique Images:
 -   No of Annotations:
 -   Categories:
-
-*Improper Annotation:*</br>
-Image id: 1378 was wrongly annotated
+-   Improper Annotation: Image id: 1378 was wrongly annotated
 </br>
-*Custom Dataset:*
+
+**Custom Dataset:**
+</br>
 </br>
 Defined custom dataset which takes the dataset path and the annotation file as input. All the training images are inside the “train-val” folder. 
 </br>
+
 In the __getitem__ method, read the image using the image_id and all the meta data associated with that image.
+
 Initialized a dictionary called 'data_annotation', which will be passed to the model for training. 
+
+</br>
 This dictionary will have all the metadata of the annotation like 
-    -   actual bounding box coordinates
-    -   it’s corresponding labels
-    -   image_id
-    -   area of the bounding boxes. (Area param is used during evaluation with the COCO metric, to separate the metric scores between small, medium, and large boxes)
-    -   iscrowd   (Instances with isCrowd as 'True' will be ignored during evaluation. 
+<ul>
+    <li>actual bounding box coordinates</li>
+    <li>it’s corresponding labels</li>
+    <li>image_id</li>
+    <li>area of the bounding boxes. (Area param is used during evaluation with the COCO metric, to separate the metric scores between small, medium, and large boxes)</li>
+    <li>iscrowd   (Instances with isCrowd as 'True' will be ignored during evaluation</li>
+</ul>
+</br>
 In the __len__ method, the size of the Dataset is returned.
 </br>
+
+**Dataloader:**
+</br>
+Data loader will load the training data in batches into the model for training. Using PyTorch’s DataLoader utility, dataset was split into train and val sets.
+</br>
+**Model:**
+Torchvision’s FasterRCNN with a resnet50 backbone is used with pretrained weights as false to train and predict persons and cars in the images.
+
+[Person Car Detection Colab Notebook](https://colab.research.google.com/github/gkdivya/MLAssignment/blob/main/PersonCar_Detection.ipynb)
+
 ## Experiments
 
 Batch Size = 16 <br>
@@ -51,28 +69,23 @@ Epochs = 5
 |[With Step LR change]() |16|5|No|SGD 0.01||In progress  | 
 |[With Image Augmentation]() |16|5|Yes|SGD 0.01||In progress  | 
 
-Below important concepts were used/considered while designing the network:
-- PyTorch - Faster RCNN model is used for prediction
-- Backbone model - resnet - 50
-- 
-[Person Car Detection Colab Notebook](https://colab.research.google.com/github/gkdivya/MLAssignment/blob/main/PersonCar_Detection.ipynb)
 ### Model Architecture
 
 ![image](https://user-images.githubusercontent.com/17870236/120178750-71947580-c227-11eb-9432-77e7f455a945.png)
 
 ### Training Log
 
-    Epoch: 0, Loss: 1.7864028215408325
-    Epoch: 1, Loss: 0.3092164397239685
-    Epoch: 2, Loss: 0.3485269248485565
-    Epoch: 3, Loss: 0.36063939332962036
-    Epoch: 4, Loss: 0.8723194003105164
+    Epoch: 0, Loss: 1.228668451309204
+    Epoch: 1, Loss: 1.333381175994873
+    Epoch: 2, Loss: 1.1773134469985962
+    Epoch: 3, Loss: 0.730384349822998
+    Epoch: 4, Loss: 0.33463841676712036 
 
 ### Validation Output
 ![image](https://user-images.githubusercontent.com/17870236/120183882-eb2f6200-c22d-11eb-98ed-04693f38ea12.png)
 
 
-
 ## Reference Links
 [Kaggle Notebook]( https://www.kaggle.com/bharatb964/pytorch-implementation-of-faster-r-cnn)
 [PyTorch TorchVision Tutorial](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html)
+[Faster Rcnn](https://blog.francium.tech/object-detection-with-faster-rcnn-bc2e4295bf49)
