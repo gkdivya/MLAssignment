@@ -27,8 +27,19 @@ Objective is to train a model to localize and classify each instance of person a
 Image id: 1378 was wrongly annotated
 </br>
 *Custom Dataset:*
-
-
+</br>
+Defined custom dataset which takes the dataset path and the annotation file as input. All the training images are inside the “train-val” folder. 
+</br>
+In the __getitem__ method, read the image using the image_id and all the meta data associated with that image.
+Initialized a dictionary called 'data_annotation', which will be passed to the model for training. 
+This dictionary will have all the metadata of the annotation like 
+    -   actual bounding box coordinates
+    -   it’s corresponding labels
+    -   image_id
+    -   area of the bounding boxes. (Area param is used during evaluation with the COCO metric, to separate the metric scores between small, medium, and large boxes)
+    -   iscrowd   (Instances with isCrowd as 'True' will be ignored during evaluation. 
+In the __len__ method, the size of the Dataset is returned.
+</br>
 ## Experiments
 
 Batch Size = 16 <br>
