@@ -34,11 +34,11 @@ Image id: 1378 was wrongly annotated
 Batch Size = 16 <br>
 Epochs = 5
 
-|Experiment| Batch Size | Epochs | Augmentation | Learning Rate Scheduler | Validation Accuracy | 
+|Experiment| Batch Size | Epochs | Augmentation | Learning Rate Scheduler | Validation Accuracy | Status  | 
 |-------|---|---|---|---|---|
-|[Base Skeleton Model](https://github.com/gkdivya/MLAssignment/blob/main/Experiments/Base_Skeleton_Model_PersonCar_Detection.ipynb) |16|5|No|SGD 0.01||
-|[With Step LR change]() |16|5|No|SGD 0.01||
-|[With Image Augmentation]() |16|5|Yes|SGD 0.01||
+|[Base Skeleton Model](https://github.com/gkdivya/MLAssignment/blob/main/Experiments/Base_Skeleton_Model_PersonCar_Detection.ipynb) |16|5|No|SGD 0.01| | Completed | 
+|[With Step LR change]() |16|5|No|SGD 0.01||In progress  | 
+|[With Image Augmentation]() |16|5|Yes|SGD 0.01||In progress  | 
 
 Below important concepts were used/considered while designing the network:
 - PyTorch - Faster RCNN model is used for prediction
